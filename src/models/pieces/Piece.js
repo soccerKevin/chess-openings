@@ -7,6 +7,10 @@ class Piece {
     this.row = row
     this.imgSrc = 'images/pieces.png'
   }
+
+  name(){
+    return this.constructor.name.toLowerCase()
+  }
 }
 
 export default Piece;

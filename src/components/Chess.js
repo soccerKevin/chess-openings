@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import Board from './Board';
+import React, {Component} from 'react'
+import Board from './Board'
 import Player from 'models/Player'
-import 'stylesheets/Chess.css';
+import 'stylesheets/Chess.css'
 
 class Chess extends Component {
   constructor(props) {
