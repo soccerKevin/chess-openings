@@ -1,7 +1,7 @@
 import Num from 'util/Number'
 
 class Piece {
-  constructor(column, row) {
+  constructor(row, column) {
     this.column = column
     this.columnLetter = Num.numToLetter(column + 1)
     this.row = row
