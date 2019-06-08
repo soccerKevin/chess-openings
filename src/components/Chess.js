@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Board from './Board';
 import '../stylesheets/Chess.css';
 
-function App() {
-  return (
-    <div className="chess">
-      <Board/>
-    </div>
-  );
+class Chess extends Component {
+  render() {
+    return (
+      <div className="chess">
+        <Board/>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default Chess;
