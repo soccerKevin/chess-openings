@@ -1,9 +1,9 @@
-import King from './pieces/King'
-import Queen from './pieces/Queen'
-import Pawn from './pieces/Pawn'
-import Rook from './pieces/Rook'
-import Knight from './pieces/Knight'
-import Bishop from './pieces/Bishop'
+import King from './pieces/king'
+import Queen from './pieces/queen'
+import Pawn from './pieces/pawn'
+import Rook from './pieces/rook'
+import Knight from './pieces/knight'
+import Bishop from './pieces/bishop'
 
 class Player {
   constructor(color) {

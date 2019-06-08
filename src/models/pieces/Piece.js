@@ -1,4 +1,4 @@
-import Num from 'util/Number'
+import Num from 'util/number'
 
 class Piece {
   constructor(row, column) {
