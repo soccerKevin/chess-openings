@@ -28,9 +28,9 @@ class Board extends Component {
                   return (
                     <Square
                       key={"" + row + column}
-                      row={7 - row}
+                      row={row}
                       column={column}
-                      piece={this.state.pieces[7 - row][column]}
+                      piece={this.state.pieces[row][column]}
                     />
                   )
                 })

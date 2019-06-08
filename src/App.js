@@ -1,6 +1,6 @@
 import React from 'react'
 import Chess from 'components/Chess'
-import 'App.css'
+import 'stylesheets/App.css'
 
 function App() {
   return (
