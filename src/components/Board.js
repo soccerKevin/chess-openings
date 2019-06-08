@@ -1,8 +1,22 @@
 import React, {Component} from 'react';
 import Square from './Square';
-import '../stylesheets/Board.css';
+import 'stylesheets/Board.css';
 
 class Board extends Component {
+  constructor(props) {
+    super(props)
+
+    var pieces = new Array(8).fill({}).map(() => new Array(8).fill(null))
+
+    props.pieces.forEach( (piece) => {
+      pieces[piece.column][piece.row] = piece
+    })
+
+    this.state = {
+      pieces: pieces
+    }
+  }
+
   render() {
     return (
       <div className="board_sizer">
@@ -16,6 +30,7 @@ class Board extends Component {
                       key={"" + row + column}
                       row={7 - row}
                       column={column}
+                      piece={this.state.pieces[row][column]}
                     />
                   )
                 })

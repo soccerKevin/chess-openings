@@ -27,5 +27,14 @@
   justify-content: center;
   align-items: center;
   border: solid 1px black;
+  position: relative;
 }
+
+.square label {
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+}
+
+
 
