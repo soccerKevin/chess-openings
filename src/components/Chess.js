@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Board from './board'
-import ControlPanel from './controlPanel'
+import Toggle from './toggle'
 import Player from 'models/player'
 import 'stylesheets/chess.scss'
 
@@ -9,8 +9,13 @@ class Chess extends Component {
     super(props)
     this.state = {
       whitePlayer: new Player('white'),
-      blackPlayer: new Player('black')
+      blackPlayer: new Player('black'),
+      whiteOnBottom: true
     }
+  }
+
+  toggleWhiteOnBottom() {
+    this.setState({ whiteOnBottom: !this.state.whiteOnBottom })
   }
 
   render() {
@@ -18,8 +23,16 @@ class Chess extends Component {
       <div className="chess">
         <Board
           pieces={this.state.whitePlayer.pieces.concat(this.state.blackPlayer.pieces)}
+          whiteOnBottom={this.state.whiteOnBottom}
         />
-        <ControlPanel/>
+
+        <div className="controlPanel">
+          <Toggle
+            options={['Standard', 'Reversed']}
+            onClick={this.toggleWhiteOnBottom.bind(this)}
+            active={ !this.state.whiteOnBottom }
+          />
+        </div>
       </div>
     );
   }

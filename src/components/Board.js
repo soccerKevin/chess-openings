@@ -23,8 +23,16 @@ class Board extends Component {
         <div className="board_container">
           <div className="board">
             {
-              (new Array(8)).fill({}).map( (el, row) => {
-                return (new Array(8).fill({})).map( (el, column) => {
+              (new Array(8)).fill({}).map( (el, r) => {
+                return (new Array(8).fill({})).map( (el, c) => {
+                  var row, column;
+                  if(this.props.whiteOnBottom) {
+                    row = 7 - r
+                    column = c
+                  } else {
+                    row = r
+                    column = 7 - c
+                  }
                   return (
                     <Square
                       key={"" + row + column}

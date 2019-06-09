@@ -1,4 +1,11 @@
 .chess {
   width: 100%;
   position: relative;
+
+  .controlPanel {
+    position: absolute;
+    left: 80%;
+    top: 0;
+    width: 20%;
+  }
 }

@@ -1,15 +1,17 @@
+@import 'variables';
+
 .toggle {
   height: 64px;
   min-width: 100px;
   width: 100px;
   display: inline-block;
-  border: 3px solid #e43;
+  border: 3px solid $squareBlack;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 500;
   text-align: center;
   text-decoration: none;
-  color: #e43;
+  color: $squareBlack;
   overflow: hidden;
   text-align: center;
   margin: 0;
@@ -25,7 +27,7 @@
   }
 
   .toggle-primary {
-    background-color: #e43;
+    background-color: $squareBlack;
     color: #fff;
   }
 

@@ -1,3 +1,5 @@
+@import 'variables';
+
 .square {
   display: flex;
   justify-content: center;
@@ -13,9 +15,9 @@
 }
 
 .square[color='white'] {
-  background-color: #EEEDD2;
+  background-color: $squareWhite;
 }
 
 .square[color='black'] {
-  background-color: #769656;
+  background-color: $squareBlack;
 }
