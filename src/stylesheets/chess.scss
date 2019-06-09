@@ -3,6 +3,10 @@
   position: relative;
   max-width: 1140px;
 
+  * {
+    user-select: none;
+  }
+
   .controlPanel {
     position: absolute;
     left: 80%;
