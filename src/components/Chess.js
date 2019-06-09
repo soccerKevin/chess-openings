@@ -33,18 +33,22 @@ class Chess extends Component {
         />
 
         <div className="controlPanel">
-          <Toggle
-            className='orientation'
-            options={['Standard', 'Reversed']}
-            onClick={this.toggleWhiteOnBottom.bind(this)}
-            active={ !this.state.whiteOnBottom }
-          />
-          <Toggle
-            className='gridLabel'
-            options={['Outside', 'Inside']}
-            onClick={this.toggleCoordsOutside.bind(this)}
-            active={ !this.state.coordsOutside }
-          />
+          <div className="orientationCoords">
+            <Toggle
+              className='orientation'
+              label="Board Orientation"
+              options={['Standard', 'Reversed']}
+              onClick={this.toggleWhiteOnBottom.bind(this)}
+              active={ !this.state.whiteOnBottom }
+            />
+            <Toggle
+              label="Coordinate Placement"
+              className='gridLabel'
+              options={['Outside', 'Inside']}
+              onClick={this.toggleCoordsOutside.bind(this)}
+              active={ !this.state.coordsOutside }
+            />
+          </div>
         </div>
       </div>
     );

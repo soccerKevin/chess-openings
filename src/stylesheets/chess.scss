@@ -1,11 +1,16 @@
 .chess {
-  width: 100%;
+  width: calc(100% - 50px);
   position: relative;
+  max-width: 1140px;
 
   .controlPanel {
     position: absolute;
     left: 80%;
     top: 0;
     width: 20%;
+
+    .orientationCoords {
+      display: flex;
+    }
   }
 }

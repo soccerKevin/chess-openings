@@ -14,20 +14,30 @@ class Toggle extends Component {
 
   render() {
     return (
-      <button
-        className={this.classes()}
-        onClick={this.props.onClick}
-      >
+      <div class="toggleContainer">
+        {
+          this.props.label ? (
+            <label>
+              {this.props.label}
+            </label>
+          ) : (null)
+        }
 
-        <div className="toggle-primary">
-          {this.props.options[0]}
-        </div>
+        <button
+          className={this.classes()}
+          onClick={this.props.onClick}
+        >
 
-        <div className="toggle-secondary">
-          {this.props.options[1]}
-        </div>
+          <div className="toggle-primary">
+            {this.props.options[0]}
+          </div>
 
-      </button>
+          <div className="toggle-secondary">
+            {this.props.options[1]}
+          </div>
+
+        </button>
+      </div>
     )
   }
 }
