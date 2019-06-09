@@ -28,6 +28,7 @@ class Chess extends Component {
 
         <div className="controlPanel">
           <Toggle
+            className='orientation'
             options={['Standard', 'Reversed']}
             onClick={this.toggleWhiteOnBottom.bind(this)}
             active={ !this.state.whiteOnBottom }

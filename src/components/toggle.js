@@ -2,10 +2,20 @@ import React, {Component} from 'react'
 import 'stylesheets/toggle.scss'
 
 class Toggle extends Component {
+  classes() {
+    var classNames = [
+      'toggle',
+      this.props.className,
+
+    ]
+    if(this.props.active) classNames.push('option2')
+    return classNames.join(' ')
+  }
+
   render() {
     return (
       <button
-        className={"toggle " + (this.props.active ? 'option2' : '')}
+        className={this.classes()}
         onClick={this.props.onClick}
       >
 

@@ -11,7 +11,7 @@ describe('Chess', () => {
 
   describe('constructor', () => {
     beforeEach( () => {
-      chess = ReactDOM.render(<Chess />, document.createElement('div'));
+      {chess = ReactDOM.render(<Chess />, document.createElement('div'));}
     });
 
     it('has 2 players who have 16 pieces', () => {
@@ -51,6 +51,20 @@ describe('Chess', () => {
 
     it('has pawns', () => {
       expect(chess.find('figure.piece[name="pawn"]').length).toEqual(16)
+    })
+  })
+
+  describe('black on bottom', () => {
+    beforeEach( ()=> {
+      chess = mount(<Chess />)
+      chess.find('.toggle.orientation').simulate('click')
+    })
+
+    it('has black pieces on the bottom', () => {
+      var blackKing = chess.find("figure.piece[name='knight'][color='black']").first()
+      var square = blackKing.parents('.square')
+      expect(square.props().row).toEqual(8)
+      expect(square.props().column).toEqual('g')
     })
   })
 })
