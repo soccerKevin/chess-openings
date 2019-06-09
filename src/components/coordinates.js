@@ -6,9 +6,14 @@ class Coordinates extends Component {
       <div className={"coordinates " + this.props.className }>
         {
           this.props.coordinates.map( (coord) => {
-            return <div className='cell'>
-              { coord }
-            </div>
+            return (
+              <div
+                className='cell'
+                key={coord}
+              >
+                { coord }
+              </div>
+            )
           })
         }
       </div>

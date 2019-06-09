@@ -16,14 +16,14 @@ class Square extends Component {
     return (
       <div
         className="square"
-        row={this.props.row + 1}
+        row={"" + (this.props.row + 1)}
         column={this.state.columnLetter}
         color={(this.props.row + this.props.column) % 2 === 0 ? 'black' : 'white' }
       >
         {
           this.props.showGrid ? (
             <label>
-              {this.state.columnLetter}{this.props.row + 1}
+              {this.state.columnLetter + (this.props.row + 1)}
             </label>
           ) : (null)
         }

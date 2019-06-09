@@ -14,7 +14,7 @@ class Toggle extends Component {
 
   render() {
     return (
-      <div class="toggleContainer">
+      <div className="toggleContainer">
         {
           this.props.label ? (
             <label>

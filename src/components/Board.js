@@ -18,18 +18,27 @@ class Board extends Component {
     }
   }
 
+  rowCoords() {
+    var rowCoords = '87654321'.split('')
+    return rowCoords = this.props.whiteOnBottom ? rowCoords : rowCoords.reverse()
+  }
+
+  columnCoords() {
+    var colCoords = 'abcdefgh'.split('')
+    return colCoords = this.props.whiteOnBottom ? colCoords : colCoords.reverse()
+  }
+
   render() {
-    console.log(this.props)
     return (
       <div className="board_sizer">
         <div className={"board_container " + (this.props.coordsOutside ? 'coordsOutside' : '')}>
           <Coordinates
             className="row"
-            coordinates={'12345678'.split('')}
+            coordinates={this.rowCoords()}
           />
           <Coordinates
             className="column"
-            coordinates={'abcdefgh'.split('')}
+            coordinates={this.columnCoords()}
           />
           <div className="board">
             {

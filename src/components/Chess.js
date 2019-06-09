@@ -16,11 +16,11 @@ class Chess extends Component {
   }
 
   toggleWhiteOnBottom() {
-    this.setState({ whiteOnBottom: !this.state.whiteOnBottom })
+    this.setState({whiteOnBottom: !this.state.whiteOnBottom})
   }
 
   toggleCoordsOutside() {
-    this.setState({ coordsOutside: !this.state.coordsOutside })
+    this.setState({coordsOutside: !this.state.coordsOutside})
   }
 
   render() {
@@ -39,14 +39,14 @@ class Chess extends Component {
               label="Board Orientation"
               options={['Standard', 'Reversed']}
               onClick={this.toggleWhiteOnBottom.bind(this)}
-              active={ !this.state.whiteOnBottom }
+              active={!this.state.whiteOnBottom}
             />
             <Toggle
               label="Coordinate Placement"
-              className='gridLabel'
+              className='coordinates'
               options={['Outside', 'Inside']}
               onClick={this.toggleCoordsOutside.bind(this)}
-              active={ !this.state.coordsOutside }
+              active={!this.state.coordsOutside}
             />
           </div>
         </div>
@@ -55,4 +55,4 @@ class Chess extends Component {
   }
 }
 
-export default Chess;
+export default Chess
