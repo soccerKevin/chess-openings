@@ -18,7 +18,7 @@ class Square extends Component {
         className="square"
         row={this.props.row + 1}
         column={this.state.columnLetter}
-        color={(this.props.row + this.props.column) % 2 == 0 ? 'black' : 'white' }
+        color={(this.props.row + this.props.column) % 2 === 0 ? 'black' : 'white' }
       >
         <label>
           {this.state.columnLetter}{this.props.row + 1}

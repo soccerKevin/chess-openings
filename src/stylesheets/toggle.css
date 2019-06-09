@@ -1,0 +1,32 @@
+.toggle {
+  height: 64px;
+  min-width: 100px;
+  width: 100px;
+  display: inline-block;
+  border: 3px solid #e43;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  color: #e43;
+  overflow: hidden;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.toggle .toggle-primary,
+.toggle .toggle-secondary {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 64px;
+  transition: margin .4s;
+}
+.toggle .toggle-primary {
+  background-color: #e43;
+  color: #fff;
+}
+.toggle.option2 .toggle-primary {
+  margin-top: -64px;
+}
