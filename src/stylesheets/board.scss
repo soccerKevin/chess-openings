@@ -21,8 +21,8 @@
   grid-template-columns: repeat(8, 12.5%);
   grid-template-rows: repeat(8, 12.5%);
   border: solid 1px black;
-}
 
-.board * {
-  user-select: none;
+  * {
+    user-select: none;
+  }
 }

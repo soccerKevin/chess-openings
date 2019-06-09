@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Toggle from './toggle'
-import 'stylesheets/controlPanel.css'
+import 'stylesheets/controlPanel.scss'
 
 class ControlPanel extends Component {
   render() {

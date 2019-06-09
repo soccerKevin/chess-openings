@@ -14,19 +14,22 @@
   text-align: center;
   margin: 0;
   padding: 0;
-}
-.toggle .toggle-primary,
-.toggle .toggle-secondary {
-  display: block;
-  width: 100%;
-  height: 100%;
-  line-height: 64px;
-  transition: margin .4s;
-}
-.toggle .toggle-primary {
-  background-color: #e43;
-  color: #fff;
-}
-.toggle.option2 .toggle-primary {
-  margin-top: -64px;
+
+  .toggle-primary,
+  .toggle-secondary {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 64px;
+    transition: margin .4s;
+  }
+
+  .toggle-primary {
+    background-color: #e43;
+    color: #fff;
+  }
+
+  &.option2 .toggle-primary {
+    margin-top: -64px;
+  }
 }

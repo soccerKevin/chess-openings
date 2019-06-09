@@ -1,0 +1,41 @@
+.piece {
+  overflow: hidden;
+  width: 70px;
+  height: 100%;
+  display: block;
+  background-image: url('../images/pieces.png');
+  background-size: 440px;
+  position: absolute;
+  margin: 0;
+  left: calc(50% - 2px);
+  transform: translateX(-50%);
+
+  &[color='white'] {
+    background-position-y: -89px;
+  }
+
+  &[name='rook'] {
+    background-position-x: 0px;
+  }
+
+  &[name='knight'] {
+    background-position-x: -294px;
+  }
+
+  &[name='bishop'] {
+    background-position-x: -76px;
+  }
+
+  &[name='king'] {
+    background-position-x: -223px;
+  }
+
+  &[name='queen'] {
+    background-position-x: -150px;
+  }
+
+  &[name='pawn'] {
+    background-position-x: -368px;
+  }
+}
+

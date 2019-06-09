@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Piece from './piece'
 import Num from 'util/number'
-import 'stylesheets/square.css'
+import 'stylesheets/square.scss'
 
 class Square extends Component {
   constructor(props) {
