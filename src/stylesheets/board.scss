@@ -11,6 +11,48 @@
   padding-bottom: 100%;
   position: relative;
   border: solid 10px #312E2B;
+  padding-left: 22px;
+  padding-top: 22px;
+
+  &.coordsOutside .coordinates {
+    opacity: 1;
+  }
+
+  .coordinates {
+    opacity: 0;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+
+    &.row {
+      left: 0px;
+      flex-direction: column;
+      height: 100%;
+
+      .cell {
+        height: 12.5%;
+      }
+    }
+
+    &.column {
+      top: 0px;
+      width: 100%;
+
+      .cell {
+        width: 12.5%;
+      }
+    }
+
+    .cell {
+      color: white;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+    }
+  }
 }
 
 .board {

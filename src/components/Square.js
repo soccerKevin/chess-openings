@@ -20,16 +20,18 @@ class Square extends Component {
         column={this.state.columnLetter}
         color={(this.props.row + this.props.column) % 2 === 0 ? 'black' : 'white' }
       >
-        <label>
-          {this.state.columnLetter}{this.props.row + 1}
-        </label>
+        {
+          this.props.showGrid ? (
+            <label>
+              {this.state.columnLetter}{this.props.row + 1}
+            </label>
+          ) : (null)
+        }
 
         {
           this.props.piece ? (
             <Piece piece={this.props.piece} />
-          ) : (
-            null
-          )
+          ) : (null)
         }
       </div>
     );

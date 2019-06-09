@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Square from './square'
+import Coordinates from './coordinates'
 import 'stylesheets/board.scss'
 
 class Board extends Component {
@@ -18,9 +19,18 @@ class Board extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="board_sizer">
-        <div className="board_container">
+        <div className={"board_container " + (this.props.coordsOutside ? 'coordsOutside' : '')}>
+          <Coordinates
+            className="row"
+            coordinates={'12345678'.split('')}
+          />
+          <Coordinates
+            className="column"
+            coordinates={'abcdefgh'.split('')}
+          />
           <div className="board">
             {
               (new Array(8)).fill({}).map( (el, r) => {
@@ -35,6 +45,7 @@ class Board extends Component {
                   }
                   return (
                     <Square
+                      showGrid={!this.props.coordsOutside}
                       key={"" + row + column}
                       row={row}
                       column={column}

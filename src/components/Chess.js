@@ -10,12 +10,17 @@ class Chess extends Component {
     this.state = {
       whitePlayer: new Player('white'),
       blackPlayer: new Player('black'),
-      whiteOnBottom: true
+      whiteOnBottom: true,
+      coordsOutside: true
     }
   }
 
   toggleWhiteOnBottom() {
     this.setState({ whiteOnBottom: !this.state.whiteOnBottom })
+  }
+
+  toggleCoordsOutside() {
+    this.setState({ coordsOutside: !this.state.coordsOutside })
   }
 
   render() {
@@ -24,6 +29,7 @@ class Chess extends Component {
         <Board
           pieces={this.state.whitePlayer.pieces.concat(this.state.blackPlayer.pieces)}
           whiteOnBottom={this.state.whiteOnBottom}
+          coordsOutside={this.state.coordsOutside}
         />
 
         <div className="controlPanel">
@@ -32,6 +38,12 @@ class Chess extends Component {
             options={['Standard', 'Reversed']}
             onClick={this.toggleWhiteOnBottom.bind(this)}
             active={ !this.state.whiteOnBottom }
+          />
+          <Toggle
+            className='gridLabel'
+            options={['Outside', 'Inside']}
+            onClick={this.toggleCoordsOutside.bind(this)}
+            active={ !this.state.coordsOutside }
           />
         </div>
       </div>
