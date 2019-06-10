@@ -1,8 +1,12 @@
 import React, {Component} from 'react'
 import Board from './board'
-import Toggle from './toggle'
+import {Dropdown} from 'react-bootstrap';
 import Player from 'models/player'
+import Toggle from './toggle'
+
 import 'stylesheets/chess.scss'
+
+const openings = require("data/openings.json")
 
 class Chess extends Component {
   constructor(props) {
@@ -21,6 +25,12 @@ class Chess extends Component {
 
   toggleCoordsOutside() {
     this.setState({coordsOutside: !this.state.coordsOutside})
+  }
+
+  selectOpening(e) {
+    var openingId = parseInt(e.target.id)
+    var opening = openings.find((o) => o.id === openingId)
+    this.setState({selectedOpening: opening})
   }
 
   render() {
@@ -49,6 +59,29 @@ class Chess extends Component {
               active={!this.state.coordsOutside}
             />
           </div>
+
+          <Dropdown>
+            <Dropdown.Toggle
+              variant="success"
+            >
+              {(this.state.selectedOpening ? this.state.selectedOpening.name : "Openings")}
+            </Dropdown.Toggle>
+            <Dropdown.Menu onClick={this.selectOpening.bind(this)}>
+              {
+                openings.map( (opening) => {
+                  return (
+                    <Dropdown.Item
+                      eventKey={opening.id}
+                      key={opening.id}
+                      id={opening.id}
+                    >
+                      {opening.name}
+                    </Dropdown.Item>
+                  )
+                })
+              }
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       </div>
     );
