@@ -15,7 +15,7 @@ class Chess extends Component {
     var whitePlayer = new Player('white')
     var blackPlayer = new Player('black')
 
-    var firstOpening = openings.find((o) => o.id === 2994)
+    var firstOpening = openings.find((o) => o.id === 2589)
 
     this.state = {
       whitePlayer: whitePlayer,
@@ -71,6 +71,10 @@ class Chess extends Component {
     if(!nextMove) return
     var fromSquare = nextMove.slice(0, 2)
     var toSquare = nextMove.slice(2)
+
+    pieces = pieces.filter((p) => {
+      return (("" + p.columnLetter + p.row) !== toSquare)
+    })
 
     var piece = pieces.find((p) => {
       return (("" + p.columnLetter + p.row) === fromSquare)
