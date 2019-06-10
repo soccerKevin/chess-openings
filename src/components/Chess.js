@@ -42,6 +42,13 @@ class Chess extends Component {
     this.setState({coordsOutside: !this.state.coordsOutside})
   }
 
+  resetPieces() {
+    this.setState({
+      moveCount: 0,
+      pieces: this.newPieces()
+    })
+  }
+
   selectOpening(e) {
     var openingId = parseInt(e.target.id)
     var opening = openings.find((o) => o.id === openingId)
@@ -135,6 +142,13 @@ class Chess extends Component {
             onClick={this.step.bind(this)}
           >
             Step
+          </Button>
+
+          <Button
+            className="resetButton"
+            onClick={this.resetPieces.bind(this)}
+          >
+            Reset
           </Button>
         </div>
       </div>
