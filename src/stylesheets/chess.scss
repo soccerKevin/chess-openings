@@ -31,7 +31,10 @@
       }
     }
 
-    .openingDropdown {
+    .dropdown-menu {
+      height: 400px;
+      overflow-y: scroll;
+      max-width: 400px;
     }
   }
 }
