@@ -11,7 +11,6 @@
   padding-bottom: 100%;
   position: relative;
   padding-left: 22px;
-  padding-top: 22px;
 
   &.coordsOutside .coordinates {
     opacity: 1;
@@ -35,7 +34,7 @@
     }
 
     &.column {
-      top: 6px;
+      bottom: -18px;
       width: 100%;
 
       .cell {

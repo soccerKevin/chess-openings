@@ -15,7 +15,7 @@ class Chess extends Component {
     var whitePlayer = new Player('white')
     var blackPlayer = new Player('black')
 
-    var firstOpening = openings.find((o) => o.id === 2589)
+    var firstOpening = openings.find((o) => o.id === 2624)
 
     this.state = {
       whitePlayer: whitePlayer,
