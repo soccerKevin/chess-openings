@@ -12,15 +12,15 @@ class Player {
 
   whitePieces() {
     return [
-      new Rook(0, 0),
-      new Knight(0, 1),
-      new Bishop(0, 2),
-      new Queen(0, 3),
-      new King(0, 4),
-      new Bishop(0, 5),
-      new Knight(0, 6),
-      new Rook(0, 7)
-    ].concat(this.pawns(1)).map( (piece)=> {
+      new Rook(1, 1),
+      new Knight(1, 2),
+      new Bishop(1, 3),
+      new Queen(1, 4),
+      new King(1, 5),
+      new Bishop(1, 6),
+      new Knight(1, 7),
+      new Rook(1, 8)
+    ].concat(this.pawns(2)).map( (piece)=> {
       piece.color = 'white'
       return piece
     })
@@ -28,15 +28,15 @@ class Player {
 
   blackPieces() {
     return [
-      new Rook(7, 0),
-      new Knight(7, 1),
-      new Bishop(7, 2),
-      new Queen(7, 3),
-      new King(7, 4),
-      new Bishop(7, 5),
-      new Knight(7, 6),
-      new Rook(7, 7)
-    ].concat(this.pawns(6)).map( (piece)=> {
+      new Rook(8, 1),
+      new Knight(8, 2),
+      new Bishop(8, 3),
+      new Queen(8, 4),
+      new King(8, 5),
+      new Bishop(8, 6),
+      new Knight(8, 7),
+      new Rook(8, 8)
+    ].concat(this.pawns(7)).map( (piece)=> {
       piece.color = 'black'
       return piece
     })
@@ -44,7 +44,7 @@ class Player {
 
   pawns(row) {
     return new Array(8).fill({}).map((el, i) => {
-      return new Pawn(row, i)
+      return new Pawn(row, i + 1)
     })
   }
 }

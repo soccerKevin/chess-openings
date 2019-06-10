@@ -19,7 +19,7 @@
       display: flex;
     }
 
-    .openingDropdown {
+    button {
       background-color: $squareBlack;
       border: none!important;
       border-radius: 0;
@@ -29,6 +29,9 @@
       &:focus {
         box-shadow: none!important;
       }
+    }
+
+    .openingDropdown {
     }
   }
 }

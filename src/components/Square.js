@@ -8,7 +8,7 @@ class Square extends Component {
     super(props);
 
     this.state = {
-      columnLetter: Num.numToLetter(props.column + 1)
+      columnLetter: Num.numToLetter(props.column)
     }
   }
 
@@ -16,14 +16,14 @@ class Square extends Component {
     return (
       <div
         className="square"
-        row={"" + (this.props.row + 1)}
+        row={"" + (this.props.row)}
         column={this.state.columnLetter}
         color={(this.props.row + this.props.column) % 2 === 0 ? 'black' : 'white' }
       >
         {
           this.props.showGrid ? (
             <label>
-              {this.state.columnLetter + (this.props.row + 1)}
+              {this.state.columnLetter + (this.props.row)}
             </label>
           ) : (null)
         }

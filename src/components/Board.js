@@ -4,18 +4,8 @@ import Coordinates from './coordinates'
 import 'stylesheets/board.scss'
 
 class Board extends Component {
-  constructor(props) {
-    super(props)
-
-    var pieces = new Array(8).fill({}).map(() => new Array(8).fill(null))
-
-    props.pieces.forEach( (piece) => {
-      pieces[piece.row][piece.column] = piece
-    })
-
-    this.state = {
-      pieces: pieces
-    }
+  findPiece(row, col) {
+    return this.props.pieces.find((p) => p.column === col && p.row === row)
   }
 
   rowCoords() {
@@ -44,13 +34,13 @@ class Board extends Component {
             {
               (new Array(8)).fill({}).map( (el, r) => {
                 return (new Array(8).fill({})).map( (el, c) => {
-                  var row, column;
+                  var row, column
                   if(this.props.whiteOnBottom) {
-                    row = 7 - r
-                    column = c
+                    row = 8 - r
+                    column = c + 1
                   } else {
-                    row = r
-                    column = 7 - c
+                    row = r + 1
+                    column = 8 - c
                   }
                   return (
                     <Square
@@ -58,7 +48,7 @@ class Board extends Component {
                       key={"" + row + column}
                       row={row}
                       column={column}
-                      piece={this.state.pieces[row][column]}
+                      piece={this.findPiece(row, column)}
                     />
                   )
                 })

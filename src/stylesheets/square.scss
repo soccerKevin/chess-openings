@@ -10,8 +10,9 @@
 
 .square label {
   position: absolute;
-  bottom: 2px;
-  left: 2px;
+  bottom: -8px;
+  left: 5px;
+  text-transform: uppercase;
 }
 
 .square[color='white'] {

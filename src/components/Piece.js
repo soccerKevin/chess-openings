@@ -8,6 +8,9 @@ class Piece extends Component {
         className="piece"
         color={this.props.piece.color}
         name={this.props.piece.name()}
+        column={this.props.piece.column}
+        column_letter={this.props.piece.columnLetter}
+        row={this.props.piece.row}
       >
       </figure>
     );
