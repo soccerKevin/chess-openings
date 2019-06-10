@@ -63,6 +63,7 @@ class Chess extends Component {
           <Dropdown>
             <Dropdown.Toggle
               variant="success"
+              className="openingDropdown"
             >
               {(this.state.selectedOpening ? this.state.selectedOpening.name : "Openings")}
             </Dropdown.Toggle>

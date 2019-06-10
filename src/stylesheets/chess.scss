@@ -1,3 +1,5 @@
+@import 'variables';
+
 .chess {
   width: calc(100% - 50px);
   position: relative;
@@ -15,6 +17,18 @@
 
     .orientationCoords {
       display: flex;
+    }
+
+    .openingDropdown {
+      background-color: $squareBlack;
+      border: none!important;
+      border-radius: 0;
+      margin-top: 10px;
+      font-size: 20px;
+
+      &:focus {
+        box-shadow: none!important;
+      }
     }
   }
 }
