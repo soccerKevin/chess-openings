@@ -22,10 +22,16 @@ class Chess extends Component {
       blackPlayer: blackPlayer,
       whiteOnBottom: true,
       coordsOutside: true,
-      pieces: whitePlayer.pieces.concat(blackPlayer.pieces),
+      pieces: this.newPieces(),
       selectedOpening: firstOpening,
       moveCount: 0
     }
+  }
+
+  newPieces() {
+    var whitePlayer = new Player('white')
+    var blackPlayer = new Player('black')
+    return whitePlayer.pieces.concat(blackPlayer.pieces)
   }
 
   toggleWhiteOnBottom() {
@@ -42,7 +48,8 @@ class Chess extends Component {
 
     this.setState({
       selectedOpening: opening,
-      moveCount: 0
+      moveCount: 0,
+      pieces: this.newPieces()
     })
   }
 
