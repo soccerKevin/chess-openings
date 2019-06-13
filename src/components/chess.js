@@ -64,7 +64,6 @@ class Chess extends Component {
     // return if no opening to play
     if(!this.state.selectedOpening) return
 
-    var pieces = this.state.pieces
     var nextMove = this.state.selectedOpening.moves.split(' ')[this.state.moveCount]
 
     // return if out of moves
@@ -72,22 +71,57 @@ class Chess extends Component {
     var fromSquare = nextMove.slice(0, 2)
     var toSquare = nextMove.slice(2)
 
-    pieces = pieces.filter((p) => {
-      return (("" + p.columnLetter + p.row) !== toSquare)
-    })
+    this.removePiece(toSquare)
 
-    var piece = pieces.find((p) => {
-      return (("" + p.columnLetter + p.row) === fromSquare)
-    })
+    var piece = this.getPiece(fromSquare)
 
+    // if this is a castleing move
+    if(piece.name() == 'king' && (Math.abs(Num.letterToNum(fromSquare[0]) - Num.letterToNum(toSquare[0]))) > 1) {
+      // then move rook for castle
+      var rook, rookToSquare;
+      switch(toSquare) {
+        case "c1":
+          rookToSquare = "d1"
+          rook = this.getPiece("a1")
+        case "g1":
+          rookToSquare = "f8"
+          rook = this.getPiece("h8")
+        case "c8":
+          rookToSquare = "d8"
+          rook = this.getPiece("a8")
+        case "g1":
+          rookToSquare = "f1"
+          rook = this.getPiece("h1")
+      }
+
+      this.movePiece(rook, rookToSquare)
+    }
+
+    this.movePiece(piece, toSquare)
+
+    this.setState({
+      moveCount: this.state.moveCount + 1
+    })
+  }
+
+  movePiece(piece, toSquare) {
     piece.columnLetter = toSquare[0]
     piece.column = Num.letterToNum(toSquare[0])
     piece.row = parseInt(toSquare[1])
+  }
 
-    this.setState({
-      pieces: pieces,
-      moveCount: this.state.moveCount + 1
+  getPiece(square) {
+    return this.state.pieces.find((p) => {
+      return (("" + p.columnLetter + p.row) === square)
     })
+  }
+
+  removePiece(square) {
+    var piece = this.getPiece(square)
+    if(!piece) return
+    piece.columnLetter = ''
+    piece.column = -1
+    piece.row = -1
   }
 
   render() {
