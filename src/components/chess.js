@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import Board from './board'
-import {Dropdown, Button} from 'react-bootstrap';
+import {Dropdown, Button} from 'react-bootstrap'
 import Player from 'models/player'
 import Toggle from './toggle'
 import Num from 'util/number'
+import Slider from 'rc-slider'
 
 import 'stylesheets/chess.scss'
+import 'rc-slider/assets/index.css'
 
 const openings = require("data/openings.json")
 
@@ -25,7 +27,8 @@ class Chess extends Component {
       coordsOutside: true,
       pieces: this.newPieces(),
       selectedOpening: firstOpening,
-      moveCount: 0
+      moveCount: 0,
+      playSpeed: 500
     }
   }
 
@@ -48,6 +51,18 @@ class Chess extends Component {
       moveCount: 0,
       pieces: this.newPieces()
     })
+  }
+
+  setPlaySpeed(speed){
+    // convert speed (seconds) to miliseconds
+    this.setState({playSpeed: speed * 1000}, function() {
+      if(this.state.playInterval) {
+        // must wait unitl setState in stop() is finished
+        this.stop(function(){
+          this.play()
+        }.bind(this))
+      }
+    }.bind(this))
   }
 
   selectOpening(e) {
@@ -79,7 +94,7 @@ class Chess extends Component {
     this.movePiece(piece, toSquare)
 
     // if this is a castleing move
-    if(piece.name() == 'king' && (Math.abs(Num.letterToNum(fromSquare[0]) - Num.letterToNum(toSquare[0]))) > 1) {
+    if(piece.name() === 'king' && (Math.abs(Num.letterToNum(fromSquare[0]) - Num.letterToNum(toSquare[0]))) > 1) {
       // then move rook for castle
       var rook, rookToSquare;
       switch(toSquare) {
@@ -98,6 +113,8 @@ class Chess extends Component {
         case "g1":
           rookToSquare = "f1"
           rook = this.getPiece("h1")
+          break
+        default:
       }
 
       this.movePiece(rook, rookToSquare)
@@ -116,21 +133,23 @@ class Chess extends Component {
   }
 
   play() {
-    if(playInterval) return
+    if(this.state.playInterval) return
     var playInterval = setInterval(function() {
       if(!this.step()) {
         this.resetPieces()
         this.selectRandomOpening()
       }
-    }.bind(this), 500)
+    }.bind(this), this.state.playSpeed)
 
     this.setState({playInterval: playInterval})
   }
 
-  stop() {
+  stop(callback = null) {
     if(this.state.playInterval) {
       clearInterval(this.state.playInterval)
-      this.setState({playInterval: null})
+      this.setState({playInterval: null}, function() {
+       if(typeof callback === "function") callback()
+      })
     }
   }
 
@@ -232,6 +251,14 @@ class Chess extends Component {
           >
             <div className="icon"/>
           </Button>
+
+          <Slider
+            className="speed"
+            min={.25}
+            max={5}
+            step={.25}
+            onAfterChange={this.setPlaySpeed.bind(this)}
+          />
         </div>
       </div>
     );
