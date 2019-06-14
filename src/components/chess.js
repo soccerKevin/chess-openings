@@ -15,7 +15,8 @@ class Chess extends Component {
     var whitePlayer = new Player('white')
     var blackPlayer = new Player('black')
 
-    var firstOpening = openings.find((o) => o.id === 2624)
+    // 2624
+    var firstOpening = openings.find((o) => o.id === 1325)
 
     this.state = {
       whitePlayer: whitePlayer,
@@ -67,13 +68,15 @@ class Chess extends Component {
     var nextMove = this.state.selectedOpening.moves.split(' ')[this.state.moveCount]
 
     // return if out of moves
-    if(!nextMove) return
+    if(!nextMove) return false
     var fromSquare = nextMove.slice(0, 2)
     var toSquare = nextMove.slice(2)
 
     this.removePiece(toSquare)
 
     var piece = this.getPiece(fromSquare)
+
+    this.movePiece(piece, toSquare)
 
     // if this is a castleing move
     if(piece.name() == 'king' && (Math.abs(Num.letterToNum(fromSquare[0]) - Num.letterToNum(toSquare[0]))) > 1) {
@@ -83,12 +86,15 @@ class Chess extends Component {
         case "c1":
           rookToSquare = "d1"
           rook = this.getPiece("a1")
-        case "g1":
+          break
+        case "g8":
           rookToSquare = "f8"
           rook = this.getPiece("h8")
+          break
         case "c8":
           rookToSquare = "d8"
           rook = this.getPiece("a8")
+          break
         case "g1":
           rookToSquare = "f1"
           rook = this.getPiece("h1")
@@ -97,11 +103,35 @@ class Chess extends Component {
       this.movePiece(rook, rookToSquare)
     }
 
-    this.movePiece(piece, toSquare)
-
     this.setState({
       moveCount: this.state.moveCount + 1
     })
+
+    return true
+  }
+
+  selectRandomOpening() {
+    var opening = openings[Math.floor(Math.random() * openings.length)]
+    this.setState({selectedOpening: opening})
+  }
+
+  play() {
+    if(playInterval) return
+    var playInterval = setInterval(function() {
+      if(!this.step()) {
+        this.resetPieces()
+        this.selectRandomOpening()
+      }
+    }.bind(this), 500)
+
+    this.setState({playInterval: playInterval})
+  }
+
+  stop() {
+    if(this.state.playInterval) {
+      clearInterval(this.state.playInterval)
+      this.setState({playInterval: null})
+    }
   }
 
   movePiece(piece, toSquare) {
@@ -187,6 +217,20 @@ class Chess extends Component {
             onClick={this.resetPieces.bind(this)}
           >
             Reset
+          </Button>
+
+          <Button
+            className="play"
+            onClick={this.play.bind(this)}
+          >
+            <div className="triangle-right"/>
+          </Button>
+
+          <Button
+            className="stop"
+            onClick={this.stop.bind(this)}
+          >
+            <div className="icon"/>
           </Button>
         </div>
       </div>
